@@ -1,7 +1,7 @@
 # Table of contents
 
-* [Welcome](README.md)
-* [Community Projects](community-projects.md)
+* [欢迎](README.md)
+* [社区项目](community-projects.md)
 
 ## Game Data
 
