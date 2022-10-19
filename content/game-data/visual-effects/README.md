@@ -2,5 +2,6 @@
 description: Documentation for the VFX system used by FFXIV
 ---
 
-# Visual Effects
+# 视觉效果
 
+Visual Effect

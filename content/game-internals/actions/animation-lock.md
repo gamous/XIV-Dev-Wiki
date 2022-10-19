@@ -4,7 +4,7 @@ description: >-
   time before they are allowed to use any actions.
 ---
 
-# Animation Lock
+# 动画锁
 
 Animation lock is an internal timer that player has to wait certain amount of time before they are allowed to use any actions.
 
@@ -14,13 +14,9 @@ The timer is the number of seconds until the animation lock is up, stored as a f
 
 Many GCDs have 0.1s animation lock by default. This timer is paused while casting and resumed after player finishes casting on client side.
 
-{% embed url="https://cdn.discordapp.com/attachments/141479244067897344/736122305918402580/gcd.mp4" %}
-
 * oGCDs and instant skills have 0.5s initial animation lock.
 * Server can also set animation lock in response to actions used from the client (usually from the [effect packet](https://github.com/SapphireServer/Sapphire/blob/d60b68cfa2d9800bb4734f23247060ad00d385f3/src/common/Network/PacketDef/Zone/ServerZoneDef.h#L529-L568)). However, it simply **discards** any previous timer running. Therefore, game does not compensate for player's ping. (i.e. time already spent during initial animation lock)
 * You can't place ground targeted actions while animation lock is active.
-
-{% embed url="https://cdn.discordapp.com/attachments/141479244067897344/736121156658135082/ground_lock.mp4" %}
 
 When those three conditions above are combined, it can greatly impact gameplay experience.
 
@@ -28,19 +24,13 @@ When those three conditions above are combined, it can greatly impact gameplay e
 
 Some actions like limit break, foods and duty actions may lock for different amount of time. For example, movement skill locks for 0.8 seconds and items have 2.0 seconds.
 
-{% embed url="https://cdn.discordapp.com/attachments/141479244067897344/736121121509736528/bll.mp4" %}
-
 ### Clipping GCD <a href="#79353019-839a-4db5-96b0-a5be7d0addc9" id="79353019-839a-4db5-96b0-a5be7d0addc9"></a>
 
 Since animation lock from the server overwrites current animation lock to new value, it is this reason why double weaving between GCDs extremely unreliable when player is connected to the data centre across a continent or on a completely different continent.
 
-{% embed url="https://cdn.discordapp.com/attachments/141479244067897344/736121024042500176/clip_g.mp4" %}
-
 ### Hardcasting Swiftcast <a href="#c3ecce6e-2a46-4eff-8169-1d44d7e2fb40" id="c3ecce6e-2a46-4eff-8169-1d44d7e2fb40"></a>
 
 * If the client fail to receive response during initial animation lock, client is allowed to use next action. TODO.
-
-{% embed url="https://cdn.discordapp.com/attachments/141479244067897344/736136653277757460/hardswift.mp4" %}
 
 While swiftcast is one of notorious offender, this property is not limited to swiftcast only. For example, red mage's dualcast just works same as hardcasting swiftcast.
 
@@ -71,4 +61,3 @@ OR
 ## Trivia
 
 * While animation lock is named after its general purpose, it doesn't _necessarily_ has to be tied to the animation.
-
